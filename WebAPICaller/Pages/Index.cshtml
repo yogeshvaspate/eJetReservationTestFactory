@@ -3,9 +3,74 @@
 @{
     ViewData["Title"] = "Home page";
 }
+<script type="text/javascript">
+    function callCreateCustomerService() {
+        var CustomerId = $('#txtCustomerId').val();
+        var CustomerTitle = $('#txtCustomerTitle').val();;
+        var CustomerFirstName = $('#txtCustomerFirstName').val();;
+        var CustomerLastName = $('#txtCustomerLastName').val();;
 
+        $('#testCreateCustomerWebAPI').attr('href', 'http://localhost:49535/api/CreateCustomer/' + CustomerId + '/' + CustomerTitle + '/' + CustomerFirstName + '/' + CustomerLastName);
+        $('#testCreateCustomerWebAPI')[0].click();
+    }
+
+    function callReadCustomerService() {
+        var CustomerId = $('#txtReadCustomerId').val();
+
+        $('#testReadCustomerWebAPI').attr('href', 'http://localhost:49535/api/ReadCustomer/' + CustomerId);
+        $('#testReadCustomerWebAPI')[0].click();
+    }
+</script>
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <a href="http://localhost:49535/api/CreateCustomer/1/Mr/Colin/Parker">Create Customer</a>
-    <a href="http://localhost:49535/api/ReadCustomer/1">Read Customer</a>
+    <h1 class="display-4">Create Customer Test</h1>
+    <div style="display:none">
+        <a href="#" id="testCreateCustomerWebAPI">Create API URL</a>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                Customer Id : <input type="text" id="txtCustomerId" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                Customer Title : <input type="text" id="txtCustomerTitle" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                Customer First Name : <input type="text" id="txtCustomerFirstName" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                Customer Last Name : <input type="text" id="txtCustomerLastName" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <button id="btnSubmit" value="Submit" onclick="callCreateCustomerService()">Create Customer</button>
+            </div>
+        </div>
+    </div>
+
+
+    <h1 class="display-4">Read Customer Test</h1>
+    <div style="display:none">
+        <a href="#" id="testReadCustomerWebAPI">Read API URL</a>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                Customer Id : <input type="text" id="txtReadCustomerId" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <button id="btnRead" value="Read" onclick="callReadCustomerService()">Read Customer</button>
+            </div>
+        </div>
+    </div>
 </div>
